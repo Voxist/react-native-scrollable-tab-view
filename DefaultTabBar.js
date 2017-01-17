@@ -20,13 +20,17 @@ const DefaultTabBar = React.createClass({
     tabStyle: View.propTypes.style,
     renderTab: React.PropTypes.func,
     underlineStyle: View.propTypes.style,
+    underlineColor: React.PropTypes.string,
+    underlineHeight: React.PropTypes.number,
   },
 
   getDefaultProps() {
     return {
-      activeTextColor: 'navy',
-      inactiveTextColor: 'black',
-      backgroundColor: null,
+      activeTextColor: 'white',
+      inactiveTextColor: 'white',
+      underlineColor: '#00CFF3',
+      backgroundColor: '#004A57',
+      underlineHeight: 2,
     };
   },
 
@@ -60,9 +64,9 @@ const DefaultTabBar = React.createClass({
     const tabUnderlineStyle = {
       position: 'absolute',
       width: containerWidth / numberOfTabs,
-      height: 4,
-      backgroundColor: 'navy',
-      bottom: 0,
+      height: this.props.underlineHeight,
+      backgroundColor: this.props.underlineColor,
+      top: 0,
     };
 
     const left = this.props.scrollValue.interpolate({
@@ -84,19 +88,15 @@ const DefaultTabBar = React.createClass({
 const styles = StyleSheet.create({
   tab: {
     flex: 1,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 10,
   },
   tabs: {
     height: 50,
+    backgroundColor: '#004A57',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderWidth: 1,
-    borderTopWidth: 0,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
-    borderColor: '#ccc',
   },
 });
 
